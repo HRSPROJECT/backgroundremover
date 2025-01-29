@@ -12,7 +12,7 @@ st.markdown(
             background-color: #f0f0f0;
             padding: 10px 20px;
         }
-         .navbar button {
+        .navbar button {
           padding: 10px 15px;
           border-radius: 5px;
          text-decoration: none;
@@ -25,7 +25,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 st.markdown(
     f"""
     <div class="navbar">
@@ -34,7 +33,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 
 st.title("Background Remover")
 
