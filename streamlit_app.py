@@ -2,6 +2,16 @@ import streamlit as st
 from rembg import remove
 from PIL import Image
 import io
+import streamlit.components.v1 as components
+
+def open_link_button(label, url):
+    components.html(
+        f"""
+        <a href="{url}" target="_blank" style="display: inline-block; padding: 10px 15px; border-radius: 5px; text-decoration: none; background-color: #007bff; color: white; border: none; cursor: pointer;">{label}</a>
+        """,
+        height=40,
+    )
+
 
 st.markdown(
     """
@@ -12,27 +22,20 @@ st.markdown(
             background-color: #f0f0f0;
             padding: 10px 20px;
         }
-        .navbar button {
-          padding: 10px 15px;
-          border-radius: 5px;
-         text-decoration: none;
-            background-color: #007bff;
-            color: white;
-            border: none;
-             cursor: pointer;
-        }
-    </style>
+        </style>
     """,
     unsafe_allow_html=True,
 )
 st.markdown(
     f"""
     <div class="navbar">
-        <button onclick="window.open('https://hrsproject.github.io/home/', '_blank')">Explore More</button>
-    </div>
+     </div>
     """,
     unsafe_allow_html=True,
 )
+
+open_link_button("Explore More", "https://hrsproject.github.io/home/")
+
 
 st.title("Background Remover")
 
