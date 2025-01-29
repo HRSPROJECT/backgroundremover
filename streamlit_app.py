@@ -2,15 +2,44 @@ import streamlit as st
 from rembg import remove
 from PIL import Image
 import io
-import webbrowser
+
+st.markdown(
+    """
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+        }
+         .navbar button {
+          padding: 10px 15px;
+          border-radius: 5px;
+         text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            border: none;
+             cursor: pointer;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    f"""
+    <div class="navbar">
+        <button onclick="window.open('https://hrsproject.github.io/home/', '_blank')">Explore More</button>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 st.title("Background Remover")
 
-with st.sidebar:
-  if st.button("Explore More"):
-      webbrowser.open_new_tab("https://hrsproject.github.io/home/")
-
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+
 
 if uploaded_file is not None:
     try:
@@ -35,5 +64,6 @@ if uploaded_file is not None:
             file_name="output_image.png",
             mime="image/png",
         )
+
     except Exception as e:
         st.error(f"An error occurred: {e}")
