@@ -36,7 +36,14 @@ st.markdown(
 
 open_link_button("Explore More", "https://hrsproject.github.io/home/")
 
-
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 st.title("Background Remover")
 
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
@@ -65,13 +72,6 @@ if uploaded_file is not None:
             file_name="output_image.png",
             mime="image/png",
         )
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
     except Exception as e:
         st.error(f"An error occurred: {e}")
