@@ -12,7 +12,6 @@ def open_link_button(label, url):
         height=40,
     )
 
-
 st.markdown(
     """
     <style>
@@ -22,14 +21,15 @@ st.markdown(
             background-color: #f0f0f0;
             padding: 10px 20px;
         }
-        </style>
+    </style>
     """,
     unsafe_allow_html=True,
 )
+
 st.markdown(
     f"""
     <div class="navbar">
-     </div>
+    </div>
     """,
     unsafe_allow_html=True,
 )
@@ -48,7 +48,6 @@ st.title("Background Remover")
 
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
-
 if uploaded_file is not None:
     try:
         input_image = Image.open(uploaded_file)
@@ -64,7 +63,8 @@ if uploaded_file is not None:
         output_image.save(output_image_bytes, format="PNG")
         output_image_bytes.seek(0)
 
-        st.image(output_image, caption="Processed Image", use_column_width=True)
+        # Updated here
+        st.image(output_image, caption="Processed Image", use_container_width=True)
 
         st.download_button(
             label="Download Processed Image",
